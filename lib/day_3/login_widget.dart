@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:project_firman/main.dart';
+
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key});
+
+void passDialog() {
+  showDialog(
+    context: navigatorKey.currentState!.overlay!.context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        content: Text('OK Login Success'),
+        actions: <Widget>[
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +46,7 @@ class LoginWidget extends StatelessWidget {
               SizedBox(height: 10),
               TextField(obscureText: true,decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Password'),),
               const SizedBox(height: 30),
-              ElevatedButton(style: style, onPressed: () {}, child: const Text('Login')),
+              ElevatedButton(style: style,onPressed: passDialog,child: Text('Login')),
               ],
             ),
         
